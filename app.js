@@ -1,14 +1,11 @@
 const express = require('express');
-
+const path = require('path');
 const app = express();
 
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
-    const blog = {
-        id: 1,
-        title: 'My First Blog',
-        description: 'This is my first blog'
-    };
-    res.send(blog);
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 const port = 3000;
